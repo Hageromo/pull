@@ -1,20 +1,20 @@
 function createNode(element) {
-    return document.createElement(element); // Create the type of element you pass in the parameters
+    return document.createElement(element);
 }
 function append(parent, el) {
-    return parent.appendChild(el); // Append the second parameter(element) to the first one
+    return parent.appendChild(el);
 }
 
 const ul = document.getElementById('users');
 
 fetch("api/users")
-.then((resp) => resp.json()) // Transform the data into json
+.then((resp) => resp.json())
 .then(function(data) {
-    let users = data; // Get the results
-    return users.map(function(user) { // Map through the results and for each run the code below
-        let li = createNode('li'), //  Create the elements we need
+    let users = data;
+    return users.map(function(user) {
+        let li = createNode('li'),
             span = createNode('span');
-        li.innerHTML = `${user.id} ${user.email}`; // Make the HTML of our span to be the first and last name of our author
+        li.innerHTML = `${user.id} ${user.email}`;
         append(li, span);
         append(ul, li);
     })

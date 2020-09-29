@@ -3,6 +3,7 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -16,6 +17,11 @@ public class UserController {
     @GetMapping("/api/users")
     public Iterable<User> getUser(){
 
+        return userRepository.findAll();
+    }
+
+    @PostMapping("/post")
+    public Iterable<User> postUser(){
         User user =new User();
         user.setEmail("MiloDupcia@chybTy");
         user.setName("Sriłosz");
@@ -28,5 +34,6 @@ public class UserController {
 
         return userRepository.findAll();
     }
+
 
 }
